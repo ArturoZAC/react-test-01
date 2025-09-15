@@ -15,9 +15,19 @@ describe("MyAwesomeApp", () => {
 
   test("Should render first and lastname - screen", () => {
     render(<MyAwesomeApp />);
-    screen.debug();
+    // screen.debug();
 
     const h1 = screen.getByTestId("first-name-title");
     expect(h1.innerHTML).toContain("Fernando");
+  });
+
+  test("Should match snapsnot", () => {
+    const { container } = render(<MyAwesomeApp />);
+    expect(container).toMatchSnapshot();
+  });
+
+  test("Should match snapsnot", () => {
+    render(<MyAwesomeApp />);
+    expect(screen.getByTestId("div-app")).toMatchSnapshot();
   });
 });
